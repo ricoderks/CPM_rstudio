@@ -2,7 +2,7 @@ image: rocker/hadleyverse
 
   ## Note that we can only test packages for which we've installed all suggested dependencies; not for all installed packages
 script:
-  - Rscript --default-packages="stats, graphics, grDevices, datasets, utils, methods, base" -e 'sapply(c("devtools", "ggplot2" "dplyr", "tidyr", "reshape2", "roxygen2", "knitr", "testthat", "rmarkdown", "httr", "Rcpp"), tools::testInstalledPackage, type=c("examples", "tests"))'
+  - Rscript --default-packages="stats, graphics, grDevices, datasets, utils, methods, base" -e 'sapply(c("devtools", "ggplot2", "dplyr", "tidyr", "reshape2", "roxygen2", "knitr", "testthat", "rmarkdown", "httr", "Rcpp"), tools::testInstalledPackage, type=c("examples", "tests"))'
 
 notify:
   email:
