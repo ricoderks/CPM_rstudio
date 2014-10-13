@@ -59,6 +59,8 @@ RUN install2.r --error --deps TRUE \
     rm -rf /tmp/downloaded_packages/
 
 ## Add a few github repos where the CRAN version isn't sufficiently recent (e.g. has outstanding bugs) 
-RUN installGithub.r hadley/reshape
+RUN installGithub.r hadley/reshape \
+&& rm -rf /tmp/downloaded_packages/
+
 
 
