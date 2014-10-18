@@ -33,13 +33,12 @@ RUN apt-get update && apt-get install -y cabal-install \
   && rm -rf /root/.cabal/lib /root/.cabal/packages
 
 ## Install build dependencies for R packages with apt-get build-dep 
-RUN apt-get update && apt-get build-dep -y \
+RUN apt-get update && apt-get install --no-install-recommends -y \
     r-cran-rgl \
     r-cran-rjava \
     r-cran-rmysql \
     r-cran-rpostgresql \ 
     r-cran-rsqlite \
-    r-cran-rsqlite.extfuns \
     r-cran-xml 
 
 RUN install2.r -r http://bioconductor.org/packages/2.13/bioc \
