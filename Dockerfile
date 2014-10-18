@@ -28,7 +28,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 ## Build the newer pandoc and pandoc-citeproc from source, then clean up
 RUN apt-get update && apt-get install -y cabal-install \
   && cabal update \
-  && cabal install --bindir=/usr/local/bin pandoc pandoc-citeproc \
+  && cabal install --bindir=/usr/local/bin --global pandoc pandoc-citeproc \
   && apt-get remove --auto-remove --purge -y cabal-install \
   && rm -rf /root/.cabal/lib /root/.cabal/packages
 
