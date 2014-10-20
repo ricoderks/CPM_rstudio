@@ -25,13 +25,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     texlive-humanities \
     texlive-latex-extra 
 
-## Build the newer pandoc and pandoc-citeproc from source, then clean up
-RUN apt-get update && apt-get install -y cabal-install \
-  && cabal update \
-  && cabal install --bindir=/usr/local/bin --global pandoc pandoc-citeproc \
-  && apt-get remove --auto-remove --purge -y cabal-install \
-  && rm -rf /root/.cabal/lib /root/.cabal/packages
-
 ## Install build dependencies for R packages with apt-get build-dep 
 RUN apt-get update && apt-get install --no-install-recommends -y \
     r-cran-rgl \
