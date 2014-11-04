@@ -32,6 +32,7 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
     r-cran-rmysql \
     r-cran-rpostgresql \ 
     r-cran-rsqlite \
+    r-cran-rsqlite.extfuns \
     r-cran-xml 
 
 RUN install2.r -r http://bioconductor.org/packages/2.13/bioc \
