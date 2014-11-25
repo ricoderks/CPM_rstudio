@@ -20,6 +20,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     build-essential \
     ghostscript \
     imagemagick \
+    libgsl0-dev \
     lmodern \
     texlive-fonts-recommended \
     texlive-humanities \
