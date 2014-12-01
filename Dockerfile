@@ -18,23 +18,21 @@ RUN echo 'deb-src http://debian-r.debian.net/debian-r/ unstable main' >> /etc/ap
 ## rmarkdown needs pandoc, and works best with some additional (large!) latex libraries
 RUN apt-get update && apt-get install -y --no-install-recommends \
     build-essential \
+    default-jdk \
+    default-jre \
     ghostscript \
     imagemagick \
     libgsl0-dev \
+    libmysqlclient-dev \
+    libpq-dev \
+    libsqlite3-dev \
+    libxslt1-dev \
     lmodern \
+    r-cran-rgl \
+    r-cran-rsqlite.extfuns \
     texlive-fonts-recommended \
     texlive-humanities \
-    texlive-latex-extra 
-
-## Install build dependencies for R packages with apt-get build-dep 
-RUN apt-get update && apt-get install --no-install-recommends -y \
-    r-cran-rgl \
-    r-cran-rjava \
-    r-cran-rmysql \
-    r-cran-rpostgresql \ 
-    r-cran-rsqlite \
-    r-cran-rsqlite.extfuns \
-    r-cran-xml 
+    texlive-latex-extra  
 
 RUN install2.r -r http://bioconductor.org/packages/2.13/bioc \
     BiocInstaller \
