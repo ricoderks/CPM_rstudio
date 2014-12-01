@@ -49,11 +49,13 @@ RUN install2.r --error --deps TRUE \
     knitr \
     Rcpp \
     reshape2 \
+    rJava \
     rmarkdown \
     roxygen2 \
     testthat \
-    tidyr && \
-    rm -rf /tmp/downloaded_packages/
+    tidyr \
+  && R CMD javareconf \
+  && rm -rf /tmp/downloaded_packages/
 
 ## Add a few github repos where the CRAN version isn't sufficiently recent (e.g. has outstanding bugs) 
 RUN installGithub.r hadley/reshape \
