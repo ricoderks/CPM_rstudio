@@ -8,7 +8,6 @@ MAINTAINER "Carl Boettiger and Dirk Eddelbuettel" rocker-maintainers@eddelbuette
 RUN echo 'deb http://debian-r.debian.net/debian-r/ unstable main' >> /etc/apt/sources.list \
 && gpg --keyserver keyserver.ubuntu.com --recv-keys AE05705B842492A68F75D64E01BF7284B26DD379 \ 
 && gpg --export AE05705B842492A68F75D64E01BF7284B26DD379  | apt-key add -
-#RUN gpg --check-sigs AE05705B842492A68F75D64E01BF7284B26DD379 
 
 ## We need the deb-src repositories to use apt-get build-dep
 RUN echo 'deb-src http://debian-r.debian.net/debian-r/ unstable main' >> /etc/apt/sources.list \
@@ -32,11 +31,11 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     r-cran-rsqlite.extfuns \
     texlive-fonts-recommended \
     texlive-humanities \
-    texlive-latex-extra  
+    texlive-latex-extra \
+&& R CMD javareconf 
 
-RUN install2.r -r http://bioconductor.org/packages/2.13/bioc \
-    BiocInstaller \
-    && rm -rf /tmp/downloaded_packages/
+RUN install2.r -r http://bioconductor.org/packages/2.13/bioc BiocInstaller \
+&& rm -rf /tmp/downloaded_packages/
 
 
 ## Finally ready to install the R packages.  NOTE: failure to install a package doesn't throw an image build error. 
@@ -54,8 +53,7 @@ RUN install2.r --error --deps TRUE \
     roxygen2 \
     testthat \
     tidyr \
-  && R CMD javareconf \
-  && rm -rf /tmp/downloaded_packages/
+&& rm -rf /tmp/downloaded_packages/
 
 ## Add a few github repos where the CRAN version isn't sufficiently recent (e.g. has outstanding bugs) 
 RUN installGithub.r hadley/reshape \
