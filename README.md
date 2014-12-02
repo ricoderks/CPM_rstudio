@@ -1,6 +1,8 @@
 rocker/hadleyverse
 ==================
 
+[![Build Status](https://travis-ci.org/rocker-org/hadleyverse.svg?branch=master)](https://travis-ci.org/rocker-org/hadleyverse)
+
 See the [rocker-org Wiki](https://github.com/rocker-org/rocker/wiki/)
 for details on use and development of this Docker image.
 
