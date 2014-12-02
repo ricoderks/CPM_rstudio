@@ -53,11 +53,18 @@ RUN install2.r --error --deps TRUE \
     roxygen2 \
     testthat \
     tidyr \
+    shiny \
 && rm -rf /tmp/downloaded_packages/
 
 ## Add a few github repos where the CRAN version isn't sufficiently recent (e.g. has outstanding bugs) 
-RUN installGithub.r hadley/reshape \
+RUN installGithub.r \
+    hadley/lineprof \
+    hadley/reshape \
 && rm -rf /tmp/downloaded_packages/ /tmp/*.rds
 
 
+## Some convenience tools and configurations, particularly for command-line mode
+RUN echo '"\e[5~": history-search-backward' >> /etc/inputrc \
+&& echo '"\e[6~": history-search-backward' >> /etc/inputrc \
+&& apt-get update && apt-get install -y vim
 
