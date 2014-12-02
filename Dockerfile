@@ -34,8 +34,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     texlive-latex-extra \
 && R CMD javareconf 
 
-## Install the latest biocInstaller
-RUN Rscript -e 'source("http://bioconductor.org/biocLite.R")'
+## Install the latest BiocInstaller
+RUN Rscript -e 'source("http://bioconductor.org/biocLite.R"); biocLite("BiocInstaller")'
 
 
 ## Finally ready to install the R packages.  NOTE: failure to install a package doesn't throw an image build error. 
