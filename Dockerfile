@@ -21,6 +21,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     default-jre \
     ghostscript \
     imagemagick \
+    libcairo2-dev \
     libgsl0-dev \
     libmysqlclient-dev \
     libpq-dev \
