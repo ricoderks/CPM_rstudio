@@ -27,6 +27,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libpq-dev \
     libsqlite3-dev \
     libxslt1-dev \
+    libxt-dev \
     lmodern \
     r-cran-rgl \
     r-cran-rsqlite.extfuns \
