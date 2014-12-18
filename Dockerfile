@@ -40,28 +40,62 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 RUN Rscript -e 'source("http://bioconductor.org/biocLite.R"); biocLite("BiocInstaller")'
 
 
-## Finally ready to install the R packages.  NOTE: failure to install a package doesn't throw an image build error. 
-## Install devtools, ggplot2, dplyr, tidyr + full suggests lists
-RUN install2.r --error --deps TRUE \
+## Install the R packages.
+## NOTE: failure to install a package doesn't throw an image build error. 
+RUN install2.r --error \
     devtools \
     dplyr \
     ggplot2 \
     httr \ 
     knitr \
-    Rcpp \
     reshape2 \
-    rJava \
     rmarkdown \
-    roxygen2 \
     testthat \
     tidyr \
     shiny \
+## Manually install (useful packages from) the SUGGESTS list of the above.
+## (because --deps TRUE can fail when packages are added/removed from CRAN)
+&& install2.r --error \
+		base64enc \
+		BiocInstaller \
+		Cairo \
+		codetools \
+		data.table \
+		hexbin \
+		Hmisc \
+		jpeg \
+		Lahman \
+		lattice \
+	  MASS \
+		PKI \
+		png \
+ 		microbenchmark \ 
+		mgcv \ 
+		mapproj \
+		maps \
+		maptools \
+		mgcv \
+		multcomp \
+		nlme \
+		nycflights13 \
+		quantreg \
+	  Rcpp \
+ 		RCurl \
+		rgl \
+	  rJava \
+    roxygen2 \
+		RMySQL \
+		RPostgreSQL \
+		RSQLite \
+		testit \
+		XML \
 && rm -rf /tmp/downloaded_packages/
 
-## Add a few github repos where the CRAN version isn't sufficiently recent (e.g. has outstanding bugs) 
+## Add a few github repos 
+# where the CRAN version isn't sufficiently recent (e.g. has outstanding bugs) 
+# or package is not available on CRAN (yet)
 RUN installGithub.r \
     hadley/lineprof \
-    hadley/reshape \
 && rm -rf /tmp/downloaded_packages/ /tmp/*.rds
 
 
