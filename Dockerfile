@@ -57,7 +57,6 @@ RUN install2.r --error \
 ## (because --deps TRUE can fail when packages are added/removed from CRAN)
 && install2.r --error \
 		base64enc \
-		BiocInstaller \
 		Cairo \
 		codetools \
 		data.table \
