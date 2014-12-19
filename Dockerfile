@@ -80,7 +80,6 @@ RUN install2.r --error \
 		quantreg \
 	  Rcpp \
  		RCurl \
-		rgl \
 	  rJava \
     roxygen2 \
 		RMySQL \
