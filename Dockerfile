@@ -34,6 +34,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     texlive-fonts-recommended \
     texlive-humanities \
     texlive-latex-extra \
+		texinfo \
 && R CMD javareconf 
 
 ## Install the latest BiocInstaller
