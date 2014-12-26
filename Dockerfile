@@ -31,6 +31,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     lmodern \
     r-cran-rgl \
     r-cran-rsqlite.extfuns \
+		texlive-fonts-extra \
     texlive-fonts-recommended \
     texlive-humanities \
     texlive-latex-extra \
