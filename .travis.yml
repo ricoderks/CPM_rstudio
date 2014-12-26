@@ -30,4 +30,4 @@ before_script:
 
 script:
   - docker version
-  - docker run local/hadleyverse r -e 'library("rJava")' 
+  - docker run rocker/hadleyverse r -e 'library("rJava")' 
