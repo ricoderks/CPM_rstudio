@@ -50,6 +50,7 @@ RUN install2.r --error \
     ggplot2 \
     httr \ 
     knitr \
+		packrat \
     reshape2 \
     rmarkdown \
     testthat \
