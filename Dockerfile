@@ -6,12 +6,12 @@ MAINTAINER "Carl Boettiger and Dirk Eddelbuettel" rocker-maintainers@eddelbuette
 
 ## Add CRAN binaries and update
 RUN echo 'deb http://debian-r.debian.net/debian-r/ unstable main' >> /etc/apt/sources.list \
-&& gpg --keyserver keyserver.ubuntu.com --recv-keys AE05705B842492A68F75D64E01BF7284B26DD379 \ 
-&& gpg --export AE05705B842492A68F75D64E01BF7284B26DD379  | apt-key add -
+	&& gpg --keyserver keyserver.ubuntu.com --recv-keys AE05705B842492A68F75D64E01BF7284B26DD379 \ 
+	&& gpg --export AE05705B842492A68F75D64E01BF7284B26DD379  | apt-key add -
 
 ## We need the deb-src repositories to use apt-get build-dep
 RUN echo 'deb-src http://debian-r.debian.net/debian-r/ unstable main' >> /etc/apt/sources.list \
-&& echo 'deb-src http://http.debian.net/debian testing main' >> /etc/apt/sources.list 
+	&& echo 'deb-src http://http.debian.net/debian testing main' >> /etc/apt/sources.list 
 
 
 ## rmarkdown needs pandoc, and works best with some additional (large!) latex libraries
@@ -36,14 +36,16 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     texlive-humanities \
     texlive-latex-extra \
 		texinfo \
-&& R CMD javareconf 
+		vim \
+	&& R CMD javareconf \
+	&& apt-get clean \
+	&& rm -rf /var/lib/apt/lists/
 
 ## Install the latest BiocInstaller
 RUN Rscript -e 'source("http://bioconductor.org/biocLite.R"); biocLite("BiocInstaller")'
 
 
 ## Install the R packages.
-## NOTE: failure to install a package doesn't throw an image build error. 
 RUN install2.r --error \
     devtools \
     dplyr \
@@ -56,7 +58,7 @@ RUN install2.r --error \
     testthat \
     tidyr \
     shiny \
-## Manually install (useful packages from) the SUGGESTS list of the above.
+## Manually install (useful packages from) the SUGGESTS list of the above packages.
 ## (because --deps TRUE can fail when packages are added/removed from CRAN)
 && install2.r --error \
 		base64enc \
@@ -102,6 +104,4 @@ RUN installGithub.r \
 
 ## Some convenience tools and configurations, particularly for command-line mode
 RUN echo '"\e[5~": history-search-backward' >> /etc/inputrc \
-&& echo '"\e[6~": history-search-backward' >> /etc/inputrc \
-&& apt-get update && apt-get install -y vim
-
+&& echo '"\e[6~": history-search-backward' >> /etc/inputrc 
