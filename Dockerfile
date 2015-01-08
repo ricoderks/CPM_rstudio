@@ -94,14 +94,11 @@ RUN apt-get update \
     texlive-latex-extra \
 		texinfo \
 	&& apt-get clean \
-	&& rm -rf /var/lib/apt/lists/ \ 
-	&& mkdir /data && cd /data \ 
+	&& rm -rf /var/lib/apt/lists/ \
+	&& cd /usr/share/texlive/texmf-dist \
 	&& wget http://mirrors.ctan.org/install/fonts/inconsolata.tds.zip \
 	&& unzip inconsolata.tds.zip \
 	&& rm inconsolata.tds.zip \
-	&& mkdir -p /usr/local/texlive/texmf-local/web2c \ 
-	&& cp -Rfp * /usr/local/texlive/texmf-local \
-	&& echo Map zi4.map >> /usr/local/texlive/texmf-local/web2c/updmap.cfg \
+	&& echo "Map zi4.map" >> /usr/share/texlive/texmf-dist/web2c/updmap.cfg \
 	&& mktexlsr \
-	&& updmap-sys \
-	&& rm -rf /data 
+	&& updmap-sys 
