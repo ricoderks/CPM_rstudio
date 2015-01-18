@@ -78,6 +78,7 @@ RUN install2.r --error \
 		XML \
 && installGithub.r \
     hadley/lineprof \
+    rstudio/rticles \
 && rm -rf /tmp/downloaded_packages/ /tmp/*.rds
 
 
