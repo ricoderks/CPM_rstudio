@@ -8,6 +8,28 @@ RUN echo 'deb http://debian-r.debian.net/debian-r/ unstable main' >> /etc/apt/so
 	&& echo 'deb-src http://debian-r.debian.net/debian-r/ unstable main' >> /etc/apt/sources.list \
 	&& echo 'deb-src http://http.debian.net/debian testing main' >> /etc/apt/sources.list 
 
+## LaTeX: 
+## This installs inconsolata fonts used in R vignettes/manuals manually since texlive-fonts-extra is HUGE
+
+RUN apt-get update \ 
+	&& apt-get install -y --no-install-recommends \
+    ghostscript \
+    imagemagick \
+    lmodern \
+    texlive-fonts-recommended \
+    texlive-humanities \
+    texlive-latex-extra \
+		texinfo \
+	&& apt-get clean \
+	&& rm -rf /var/lib/apt/lists/ \
+	&& cd /usr/share/texlive/texmf-dist \
+	&& wget http://mirrors.ctan.org/install/fonts/inconsolata.tds.zip \
+	&& unzip inconsolata.tds.zip \
+	&& rm inconsolata.tds.zip \
+	&& echo "Map zi4.map" >> /usr/share/texlive/texmf-dist/web2c/updmap.cfg \
+	&& mktexlsr \
+	&& updmap-sys 
+
 ## Install some external dependencies. 360 MB
 RUN apt-get update \
 	&& apt-get install -y --no-install-recommends \
@@ -49,6 +71,8 @@ RUN install2.r --error \
 		Cairo \
 		codetools \
 		data.table \
+    gridExtra \
+    gtable \
 		hexbin \
 		Hmisc \
 		jpeg \
@@ -82,24 +106,3 @@ RUN install2.r --error \
 && rm -rf /tmp/downloaded_packages/ /tmp/*.rds
 
 
-## LaTeX: 
-## Install a more complete LaTeX environment for dev work & rmarkdown pdf output
-## Installs inconsolata fonts used in R vignettes/manuals manually since texlive-fonts-extra is HUGE
-RUN apt-get update \ 
-	&& apt-get install -y --no-install-recommends \
-    ghostscript \
-    imagemagick \
-    lmodern \
-    texlive-fonts-recommended \
-    texlive-humanities \
-    texlive-latex-extra \
-		texinfo \
-	&& apt-get clean \
-	&& rm -rf /var/lib/apt/lists/ \
-	&& cd /usr/share/texlive/texmf-dist \
-	&& wget http://mirrors.ctan.org/install/fonts/inconsolata.tds.zip \
-	&& unzip inconsolata.tds.zip \
-	&& rm inconsolata.tds.zip \
-	&& echo "Map zi4.map" >> /usr/share/texlive/texmf-dist/web2c/updmap.cfg \
-	&& mktexlsr \
-	&& updmap-sys 
