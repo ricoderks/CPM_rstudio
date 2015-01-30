@@ -60,6 +60,7 @@ RUN install2.r --error \
 		packrat \
     reshape2 \
     rmarkdown \
+    rvest \
     testthat \
     tidyr \
     shiny \
