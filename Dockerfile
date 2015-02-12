@@ -72,6 +72,7 @@ RUN install2.r --error \
 		Cairo \
 		codetools \
 		data.table \
+    downloader \
     gridExtra \
     gtable \
 		hexbin \
