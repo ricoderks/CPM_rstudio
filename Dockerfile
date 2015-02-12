@@ -104,6 +104,7 @@ RUN install2.r --error \
 && installGithub.r \
     hadley/lineprof \
     rstudio/rticles \
+    jimhester/covr
 && rm -rf /tmp/downloaded_packages/ /tmp/*.rds
 
 
