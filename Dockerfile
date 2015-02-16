@@ -3,36 +3,36 @@ MAINTAINER "Carl Boettiger and Dirk Eddelbuettel" rocker-maintainers@eddelbuette
 
 ## Add binaries for more CRAN packages, deb-src repositories in case we need `apt-get build-dep`
 RUN echo 'deb http://debian-r.debian.net/debian-r/ unstable main' >> /etc/apt/sources.list \
-	&& gpg --keyserver keyserver.ubuntu.com --recv-keys AE05705B842492A68F75D64E01BF7284B26DD379 \ 
-	&& gpg --export AE05705B842492A68F75D64E01BF7284B26DD379  | apt-key add - \
-	&& echo 'deb-src http://debian-r.debian.net/debian-r/ unstable main' >> /etc/apt/sources.list \
-	&& echo 'deb-src http://http.debian.net/debian testing main' >> /etc/apt/sources.list 
+  && gpg --keyserver keyserver.ubuntu.com --recv-keys AE05705B842492A68F75D64E01BF7284B26DD379 \ 
+  && gpg --export AE05705B842492A68F75D64E01BF7284B26DD379  | apt-key add - \
+  && echo 'deb-src http://debian-r.debian.net/debian-r/ unstable main' >> /etc/apt/sources.list \
+  && echo 'deb-src http://http.debian.net/debian testing main' >> /etc/apt/sources.list 
 
 ## LaTeX: 
 ## This installs inconsolata fonts used in R vignettes/manuals manually since texlive-fonts-extra is HUGE
 
 RUN apt-get update \ 
-	&& apt-get install -y --no-install-recommends \
+  && apt-get install -y --no-install-recommends \
     ghostscript \
     imagemagick \
     lmodern \
     texlive-fonts-recommended \
     texlive-humanities \
     texlive-latex-extra \
-		texinfo \
-	&& apt-get clean \
-	&& rm -rf /var/lib/apt/lists/ \
-	&& cd /usr/share/texlive/texmf-dist \
-	&& wget http://mirrors.ctan.org/install/fonts/inconsolata.tds.zip \
-	&& unzip inconsolata.tds.zip \
-	&& rm inconsolata.tds.zip \
-	&& echo "Map zi4.map" >> /usr/share/texlive/texmf-dist/web2c/updmap.cfg \
-	&& mktexlsr \
-	&& updmap-sys 
+    texinfo \
+  && apt-get clean \
+  && rm -rf /var/lib/apt/lists/ \
+  && cd /usr/share/texlive/texmf-dist \
+  && wget http://mirrors.ctan.org/install/fonts/inconsolata.tds.zip \
+  && unzip inconsolata.tds.zip \
+  && rm inconsolata.tds.zip \
+  && echo "Map zi4.map" >> /usr/share/texlive/texmf-dist/web2c/updmap.cfg \
+  && mktexlsr \
+  && updmap-sys 
 
 ## Install some external dependencies. 360 MB
 RUN apt-get update \
-	&& apt-get install -y --no-install-recommends \
+  && apt-get install -y --no-install-recommends \
     build-essential \
     default-jdk \
     default-jre \
@@ -45,10 +45,10 @@ RUN apt-get update \
     libxt-dev \
     r-cran-rgl \
     r-cran-rsqlite.extfuns \
-		vim \
-	&& R CMD javareconf \
-	&& apt-get clean \
-	&& rm -rf /var/lib/apt/lists/
+    vim \
+  && R CMD javareconf \
+  && apt-get clean \
+  && rm -rf /var/lib/apt/lists/
 
 ## Install the R packages. 210 MB
 RUN install2.r --error \
@@ -57,7 +57,7 @@ RUN install2.r --error \
     ggplot2 \
     httr \ 
     knitr \
-		packrat \
+    packrat \
     reshape2 \
     rmarkdown \
     rvest \
@@ -68,40 +68,40 @@ RUN install2.r --error \
 ## (because --deps TRUE can fail when packages are added/removed from CRAN)
 && Rscript -e 'source("http://bioconductor.org/biocLite.R"); biocLite("BiocInstaller")' \
 && install2.r --error \
-		base64enc \
-		Cairo \
-		codetools \
-		data.table \
+    base64enc \
+    Cairo \
+    codetools \
+    data.table \
     downloader \
     gridExtra \
     gtable \
-		hexbin \
-		Hmisc \
-		jpeg \
-		Lahman \
-		lattice \
-	  MASS \
-		PKI \
-		png \
- 		microbenchmark \ 
-		mgcv \ 
-		mapproj \
-		maps \
-		maptools \
-		mgcv \
-		multcomp \
-		nlme \
-		nycflights13 \
-		quantreg \
-	  Rcpp \
- 		RCurl \
-	  rJava \
+    hexbin \
+    Hmisc \
+    jpeg \
+    Lahman \
+    lattice \
+    MASS \
+    PKI \
+    png \
+     microbenchmark \ 
+    mgcv \ 
+    mapproj \
+    maps \
+    maptools \
+    mgcv \
+    multcomp \
+    nlme \
+    nycflights13 \
+    quantreg \
+    Rcpp \
+     RCurl \
+    rJava \
     roxygen2 \
-		RMySQL \
-		RPostgreSQL \
-		RSQLite \
-		testit \
-		XML \
+    RMySQL \
+    RPostgreSQL \
+    RSQLite \
+    testit \
+    XML \
 && installGithub.r \
     hadley/lineprof \
     rstudio/rticles \
