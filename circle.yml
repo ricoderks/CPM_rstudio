@@ -1,0 +1,15 @@
+machine:
+  services:
+    - docker
+dependencies:
+  cache_directories:
+        - "~/docker"
+  override:
+    - docker pull rocker/hadleyverse 
+
+
+test:
+  override:
+    - docker run -ti rocker/hadleyverse R --version 
+
+
