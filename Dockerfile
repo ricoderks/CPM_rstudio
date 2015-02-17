@@ -1,4 +1,4 @@
-FROM rocker/rstudio
+FROM rocker/rstudio:sandbox
 MAINTAINER "Carl Boettiger and Dirk Eddelbuettel" rocker-maintainers@eddelbuettel.com
 
 ## Add binaries for more CRAN packages, deb-src repositories in case we need `apt-get build-dep`
