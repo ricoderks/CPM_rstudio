@@ -108,4 +108,5 @@ RUN install2.r --error \
     jimhester/covr
 && rm -rf /tmp/downloaded_packages/ /tmp/*.rds
 
+COPY render /usr/local/bin/render
 
