@@ -1,4 +1,4 @@
-FROM rocker/rstudio:sandbox
+FROM rocker/rstudio
 MAINTAINER "Carl Boettiger and Dirk Eddelbuettel" rocker-maintainers@eddelbuettel.com
 
 ## Add binaries for more CRAN packages, deb-src repositories in case we need `apt-get build-dep`
@@ -107,6 +107,4 @@ RUN install2.r --error \
     rstudio/rticles \
     jimhester/covr
 && rm -rf /tmp/downloaded_packages/ /tmp/*.rds
-
-COPY render /usr/local/bin/render
 
