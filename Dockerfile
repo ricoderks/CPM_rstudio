@@ -94,7 +94,7 @@ RUN install2.r --error \
     nycflights13 \
     quantreg \
     Rcpp \
-     RCurl \
+    RCurl \
     rJava \
     roxygen2 \
     RMySQL \
@@ -105,6 +105,7 @@ RUN install2.r --error \
 && installGithub.r \
     hadley/lineprof \
     rstudio/rticles \
-    jimhester/covr
+    jimhester/covr \
+    rstudio/htmlwidgets \
 && rm -rf /tmp/downloaded_packages/ /tmp/*.rds
 
