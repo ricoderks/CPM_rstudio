@@ -106,6 +106,6 @@ RUN install2.r --error \
     hadley/lineprof \
     rstudio/rticles \
     jimhester/covr \
-    rstudio/htmlwidgets \
+    ramnathv/htmlwidgets \
 && rm -rf /tmp/downloaded_packages/ /tmp/*.rds
 
