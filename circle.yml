@@ -2,8 +2,6 @@ machine:
   services:
     - docker
 dependencies:
-  cache_directories:
-        - "~/docker"
   override:
     - docker pull rocker/hadleyverse 
 
