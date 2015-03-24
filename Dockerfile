@@ -36,7 +36,7 @@ RUN apt-get update \
     build-essential \
     default-jdk \
     default-jre \
-    libcairo2-dev \
+    libcairo2-dev/unstable \
     libgsl0-dev \
     libmysqlclient-dev \
     libpq-dev \
