@@ -41,6 +41,7 @@ RUN apt-get update \
     libmysqlclient-dev \
     libpq-dev \
     libsqlite3-dev \
+    libv8-dev \
     libxslt1-dev \
     libxt-dev \
     r-cran-rgl \
@@ -83,7 +84,7 @@ RUN install2.r --error \
     MASS \
     PKI \
     png \
-     microbenchmark \
+    microbenchmark \
     mgcv \
     mapproj \
     maps \
@@ -101,6 +102,7 @@ RUN install2.r --error \
     RPostgreSQL \
     RSQLite \
     testit \
+    V8 \
     XML \
 && installGithub.r \
     hadley/lineprof \
