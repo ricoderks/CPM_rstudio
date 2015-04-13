@@ -104,6 +104,7 @@ RUN install2.r --error \
     XML \
 && installGithub.r \
     hadley/lineprof \
+    hadley/readr \
     rstudio/rticles \
     jimhester/covr \
     ramnathv/htmlwidgets \
