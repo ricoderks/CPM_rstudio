@@ -56,12 +56,15 @@ RUN install2.r --error \
     devtools \
     dplyr \
     ggplot2 \
+    haven \
     httr \
     knitr \
     packrat \
     reshape2 \
     rmarkdown \
     rvest \
+    readr \
+    readxl \
     testthat \
     tidyr \
     shiny \
@@ -95,7 +98,6 @@ RUN install2.r --error \
     nycflights13 \
     quantreg \
     Rcpp \
-    RCurl \
     rJava \
     roxygen2 \
     RMySQL \
@@ -106,7 +108,9 @@ RUN install2.r --error \
     XML \
 && installGithub.r \
     hadley/lineprof \
-    hadley/readr \
+    hadley/xml2 \
+    hadley/purrr \
+    dgrtwo/broom \
     rstudio/rticles \
     jimhester/covr \
     ramnathv/htmlwidgets \
