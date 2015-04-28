@@ -116,3 +116,6 @@ RUN install2.r --error \
     ramnathv/htmlwidgets \
 && rm -rf /tmp/downloaded_packages/ /tmp/*.rds
 
+## httr authentication uses this port
+EXPOSE 1410
+
