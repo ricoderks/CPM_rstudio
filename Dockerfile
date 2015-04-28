@@ -113,6 +113,7 @@ RUN install2.r --error \
     dgrtwo/broom \
     rstudio/rticles \
     jimhester/covr \
+    jimhester/lintr \
     ramnathv/htmlwidgets \
 && rm -rf /tmp/downloaded_packages/ /tmp/*.rds
 
