@@ -40,11 +40,13 @@ RUN apt-get update \
     libssl-dev/unstable \
     libgsl0-dev \
     libmysqlclient-dev \
-    libpq-dev/unstable \
+    libpq-dev \
     libsqlite3-dev \
     libv8-dev \
     libxcb1-dev/unstable \
     libxdmcp-dev/unstable \
+    libxml2-dev \
+    libxslt1-dev \
     libxt-dev \
     r-cran-rgl \
     r-cran-rsqlite.extfuns \
