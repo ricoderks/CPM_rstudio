@@ -37,12 +37,14 @@ RUN apt-get update \
     default-jdk \
     default-jre \
     libcairo2-dev/unstable \
+    libssl-dev/unstable \
     libgsl0-dev \
     libmysqlclient-dev \
-    libpq-dev \
+    libpq-dev/unstable \
     libsqlite3-dev \
     libv8-dev \
-    libxslt1-dev \
+    libxcb1-dev/unstable \
+    libxdmcp-dev/unstable \
     libxt-dev \
     r-cran-rgl \
     r-cran-rsqlite.extfuns \
