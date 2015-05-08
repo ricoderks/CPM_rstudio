@@ -64,6 +64,7 @@ RUN install2.r --error \
     httr \
     knitr \
     packrat \
+    pryr \
     reshape2 \
     rmarkdown \
     rvest \
