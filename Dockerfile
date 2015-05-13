@@ -57,6 +57,7 @@ RUN apt-get update \
 
 ## Install the R packages. 210 MB
 RUN install2.r --error \
+    DiagrammeR \
     devtools \
     dplyr \
     ggplot2 \
@@ -64,6 +65,7 @@ RUN install2.r --error \
     httr \
     knitr \
     packrat \
+    pryr \
     reshape2 \
     rmarkdown \
     rvest \
