@@ -45,7 +45,7 @@ RUN apt-get update \
     libv8-dev \
     libxcb1-dev/unstable \
     libxdmcp-dev/unstable \
-    libxml2-dev \
+    libxml2-dev/unstable \
     libxslt1-dev \
     libxt-dev \
     r-cran-rgl \
