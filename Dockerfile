@@ -41,7 +41,7 @@ RUN apt-get update \
     libgsl0-dev \
     libmysqlclient-dev \
     libpq-dev \
-    libsqlite3-dev \
+    libsqlite3-dev/unstable \
     libv8-dev \
     libxcb1-dev/unstable \
     libxdmcp-dev/unstable \
