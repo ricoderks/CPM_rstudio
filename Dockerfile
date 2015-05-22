@@ -125,4 +125,4 @@ RUN install2.r --error \
 
 ## httr authentication uses this port
 EXPOSE 1410
-
+ENV HTTR_LOCALHOST 0.0.0.0
