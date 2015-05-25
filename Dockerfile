@@ -42,11 +42,11 @@ RUN apt-get update \
     libgsl0-dev \
     libmysqlclient-dev \
     libpq-dev \
-    libsqlite3-dev \
+    libsqlite3-dev/unstable \
     libv8-dev \
     libxcb1-dev/unstable \
     libxdmcp-dev/unstable \
-    libxml2-dev \
+    libxml2-dev/unstable \
     libxslt1-dev \
     libxt-dev \
     r-cran-rgl \
@@ -126,4 +126,4 @@ RUN install2.r --error \
 
 ## httr authentication uses this port
 EXPOSE 1410
-
+ENV HTTR_LOCALHOST 0.0.0.0
