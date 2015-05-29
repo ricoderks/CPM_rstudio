@@ -32,19 +32,19 @@ RUN apt-get update \
 
 ## Install some external dependencies. 360 MB
 RUN apt-get update \
-  && apt-get install -y --no-install-recommends \
+  && apt-get install -y --no-install-recommends -t unstable \
     build-essential \
     default-jdk \
     default-jre \
-    libcairo2-dev/unstable \
-    libssl-dev/unstable \
+    libcairo2-dev \
+    libssl-dev \
     libgsl0-dev \
     libmysqlclient-dev \
     libpq-dev \
     libsqlite3-dev \
     libv8-dev \
-    libxcb1-dev/unstable \
-    libxdmcp-dev/unstable \
+    libxcb1-dev \
+    libxdmcp-dev \
     libxml2-dev \
     libxslt1-dev \
     libxt-dev \
