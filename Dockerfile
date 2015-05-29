@@ -13,6 +13,7 @@ RUN echo 'deb http://debian-r.debian.net/debian-r/ unstable main' >> /etc/apt/so
 
 RUN apt-get update \
   && apt-get install -y --no-install-recommends \
+    aspell \
     ghostscript \
     imagemagick \
     lmodern \
@@ -125,4 +126,4 @@ RUN install2.r --error \
 
 ## httr authentication uses this port
 EXPOSE 1410
-
+ENV HTTR_LOCALHOST 0.0.0.0
