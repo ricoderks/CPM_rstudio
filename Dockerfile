@@ -59,6 +59,7 @@ RUN apt-get update \
 
 ## Install the R packages. 210 MB
 RUN install2.r --error \
+    broom \
     DiagrammeR \
     devtools \
     dplyr \
@@ -76,6 +77,7 @@ RUN install2.r --error \
     testthat \
     tidyr \
     shiny \
+    xml2 \
 ## Manually install (useful packages from) the SUGGESTS list of the above packages.
 ## (because --deps TRUE can fail when packages are added/removed from CRAN)
 && Rscript -e 'source("http://bioconductor.org/biocLite.R"); biocLite("BiocInstaller")' \
@@ -83,15 +85,18 @@ RUN install2.r --error \
     base64enc \
     Cairo \
     codetools \
+    covr \
     data.table \
     downloader \
     gridExtra \
     gtable \
     hexbin \
     Hmisc \
+    htmlwidgets \
     jpeg \
     Lahman \
     lattice \
+    lintr \
     MASS \
     PKI \
     png \
@@ -114,15 +119,6 @@ RUN install2.r --error \
     testit \
     V8 \
     XML \
-&& installGithub.r \
-    hadley/lineprof \
-    hadley/xml2 \
-    hadley/purrr \
-    dgrtwo/broom \
-    rstudio/rticles \
-    jimhester/covr \
-    jimhester/lintr \
-    ramnathv/htmlwidgets \
 && rm -rf /tmp/downloaded_packages/ /tmp/*.rds
 
 ## httr authentication uses this port
