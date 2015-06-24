@@ -55,7 +55,8 @@ RUN apt-get update \
     vim \
   && R CMD javareconf \
   && apt-get clean \
-  && rm -rf /var/lib/apt/lists/
+  && rm -rf /var/lib/apt/lists/ \
+  && rm -rf /tmp/downloaded_packages/ /tmp/*.rds
 
 ## Install the R packages. 210 MB
 RUN install2.r --error \
