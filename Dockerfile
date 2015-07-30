@@ -42,6 +42,7 @@ RUN apt-get update \
     libssl-dev \
     libgsl0-dev \
     libmysqlclient-dev \
+    libopenblas-base \
     libpq-dev \
     libsqlite3-dev \
     libv8-dev \
@@ -58,7 +59,7 @@ RUN apt-get update \
   && rm -rf /var/lib/apt/lists/ \
   && rm -rf /tmp/downloaded_packages/ /tmp/*.rds
 
-## Install the R packages. 210 MB
+## Install the R packages. 
 RUN install2.r --error \
     broom \
     DiagrammeR \
