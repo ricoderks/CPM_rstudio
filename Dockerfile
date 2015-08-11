@@ -51,6 +51,7 @@ RUN apt-get update \
     libxml2-dev \
     libxslt1-dev \
     libxt-dev \
+    r-cran-hexbin \
     r-cran-mnormt \
     r-cran-rgl \
     r-cran-rsqlite.extfuns \
