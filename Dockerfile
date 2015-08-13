@@ -35,6 +35,7 @@ RUN apt-get update \
 
 ## Install some external dependencies. 360 MB
 RUN apt-get update \
+  && apt-get -y dist-upgrade \ 
   && apt-get install -y --no-install-recommends -t unstable \
     build-essential \
     default-jdk \
