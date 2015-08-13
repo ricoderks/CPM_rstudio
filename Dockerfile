@@ -12,10 +12,9 @@ RUN echo 'deb http://debian-r.debian.net/debian-r/ unstable main' >> /etc/apt/so
 ## This installs inconsolata fonts used in R vignettes/manuals manually since texlive-fonts-extra is HUGE
 
 RUN apt-get update \
-  && apt-get install -y --no-install-recommends \
+  && apt-get install -t unstable -y --no-install-recommends \
     aspell \
     aspell-en \
-    build-essential \
     ghostscript \
     imagemagick \
     lmodern \
@@ -35,9 +34,8 @@ RUN apt-get update \
 
 ## Install some external dependencies. 360 MB
 RUN apt-get update \
-  && apt-get -y dist-upgrade \ 
+  && apt-get -t unstable -y dist-upgrade \ 
   && apt-get install -y --no-install-recommends -t unstable \
-    build-essential \
     default-jdk \
     default-jre \
     libcairo2-dev \
@@ -53,8 +51,6 @@ RUN apt-get update \
     libxml2-dev \
     libxslt1-dev \
     libxt-dev \
-    r-cran-hexbin \
-    r-cran-mnormt \
     r-cran-rgl \
     r-cran-rsqlite.extfuns \
     vim \
@@ -97,6 +93,7 @@ RUN Rscript -e 'source("http://bioconductor.org/biocLite.R"); biocLite("BiocInst
     downloader \
     gridExtra \
     gtable \
+    hexbin \
     Hmisc \
     htmlwidgets \
     jpeg \
