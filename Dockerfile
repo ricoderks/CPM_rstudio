@@ -15,6 +15,7 @@ RUN apt-get update \
   && apt-get install -y --no-install-recommends \
     aspell \
     aspell-en \
+    build-essential \
     ghostscript \
     imagemagick \
     lmodern \
@@ -81,11 +82,12 @@ RUN install2.r --error \
     testthat \
     tidyr \
     shiny \
-    xml2 \
+    xml2 
+
 ## Manually install (useful packages from) the SUGGESTS list of the above packages.
 ## (because --deps TRUE can fail when packages are added/removed from CRAN)
-&& Rscript -e 'source("http://bioconductor.org/biocLite.R"); biocLite("BiocInstaller")' \
-&& install2.r --error \
+RUN Rscript -e 'source("http://bioconductor.org/biocLite.R"); biocLite("BiocInstaller")' \
+  && install2.r --error \
     base64enc \
     Cairo \
     codetools \
@@ -94,7 +96,6 @@ RUN install2.r --error \
     downloader \
     gridExtra \
     gtable \
-    hexbin \
     Hmisc \
     htmlwidgets \
     jpeg \
@@ -123,7 +124,7 @@ RUN install2.r --error \
     testit \
     V8 \
     XML \
-&& rm -rf /tmp/downloaded_packages/ /tmp/*.rds
+  && rm -rf /tmp/downloaded_packages/ /tmp/*.rds
 
 ## httr authentication uses this port
 EXPOSE 1410
