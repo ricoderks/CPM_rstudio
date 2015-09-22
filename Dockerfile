@@ -34,8 +34,8 @@ RUN apt-get update \
 
 ## Install some external dependencies. 360 MB
 RUN apt-get update \
-  && apt-get -t unstable -y dist-upgrade \ 
-  && apt-get install -y --no-install-recommends -t unstable \
+&& apt-get -t unstable -y dist-upgrade \ 
+&& apt-get install -y --no-install-recommends -t unstable \
     default-jdk \
     default-jre \
     libcairo2-dev \
@@ -51,10 +51,10 @@ RUN apt-get update \
     libxml2-dev \
     libxslt1-dev \
     libxt-dev \
+    r-cran-cairo \
     r-cran-rgl \
     r-cran-rsqlite.extfuns \
     vim \
-  && apt-get build-dep -y r-cran-cairo \
   && R CMD javareconf \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/ \
@@ -87,7 +87,6 @@ RUN install2.r --error \
 RUN Rscript -e 'source("http://bioconductor.org/biocLite.R"); biocLite("BiocInstaller")' \
   && install2.r --error \
     base64enc \
-    Cairo \
     codetools \
     covr \
     data.table \
