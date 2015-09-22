@@ -54,7 +54,7 @@ RUN apt-get update \
     r-cran-rgl \
     r-cran-rsqlite.extfuns \
     vim \
-  && apt-get build-dep r-cran-cairo \
+  && apt-get build-dep -y r-cran-cairo \
   && R CMD javareconf \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/ \
