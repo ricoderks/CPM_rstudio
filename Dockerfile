@@ -51,6 +51,7 @@ RUN apt-get update \
     libxml2-dev \
     libxslt1-dev \
     libxt-dev \
+    qpdf \
     r-cran-cairo \
     r-cran-rgl \
     r-cran-rsqlite.extfuns \
