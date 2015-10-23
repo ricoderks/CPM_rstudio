@@ -54,7 +54,6 @@ RUN apt-get update \
     qpdf \
     r-cran-cairo \
     r-cran-rgl \
-    r-cran-rsqlite.extfuns \
     vim \
   && R CMD javareconf \
   && apt-get clean \
