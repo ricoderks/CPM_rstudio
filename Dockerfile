@@ -52,7 +52,6 @@ RUN apt-get update \
     libxslt1-dev \
     libxt-dev \
     qpdf \
-    r-cran-cairo \
     r-cran-rgl \
     ssh \
     vim \
