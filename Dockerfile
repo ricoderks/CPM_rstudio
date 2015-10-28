@@ -54,6 +54,7 @@ RUN apt-get update \
     qpdf \
     r-cran-cairo \
     r-cran-rgl \
+    ssh \
     vim \
   && R CMD javareconf \
   && apt-get clean \
