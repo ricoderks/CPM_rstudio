@@ -34,7 +34,6 @@ RUN apt-get update \
 
 ## Install some external dependencies. 360 MB
 RUN apt-get update \
-&& apt-get -t unstable -y dist-upgrade \ 
 && apt-get install -y --no-install-recommends -t unstable \
     default-jdk \
     default-jre \
