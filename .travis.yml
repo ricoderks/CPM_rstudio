@@ -1,0 +1,17 @@
+sudo: required
+
+services:
+  - docker
+
+## Make sure all containers build without error.
+## r-devel times out on build, so just pull instead
+
+before_install: 
+  - docker build -t rocker/hadleyverse .
+
+## Crude test, see if our container stays up after launch
+script:
+  - docker run --rm --name rstudio rocker/hadleyverse
+  - sleep 5 && docker ps | grep hadleyverse
+
+ 
