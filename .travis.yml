@@ -11,7 +11,9 @@ before_install:
 
 ## Crude test, see if our container stays up after launch
 script:
-  - docker run --rm --name rstudio rocker/hadleyverse
+  - docker run -ti rocker/hadleyverse R --version
+  - docker run -d --name rstudio rocker/hadleyverse
   - sleep 5 && docker ps | grep hadleyverse
+  - docker rm -f $(docker ps -a -q)
 
  
