@@ -34,14 +34,14 @@ RUN apt-get update \
 
 ## Install some external dependencies. 360 MB
 RUN apt-get update \
-&& apt-get install -y --no-install-recommends -t unstable \
+  && apt-get install -y --no-install-recommends -t unstable \
     default-jdk \
     default-jre \
+    libatlas-base-dev \
     libcairo2-dev \
     libssl-dev \
     libgsl0-dev \
     libmysqlclient-dev \
-    libopenblas-base \
     libpq-dev \
     libsqlite3-dev \
     libv8-dev \
