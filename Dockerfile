@@ -25,7 +25,7 @@ RUN apt-get update \
   && mktexlsr \
   && updmap-sys
 
-## Install some external dependencies. 360 MB
+## Install some external dependencies. 
 RUN apt-get update \
   && apt-get install -y --no-install-recommends -t unstable \
     default-jdk \
