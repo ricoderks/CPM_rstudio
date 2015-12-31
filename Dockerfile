@@ -88,9 +88,10 @@ RUN install2.r --error \
 ## Manually install (useful packages from) the SUGGESTS list of the above packages.
 ## (because --deps TRUE can fail when packages are added/removed from CRAN)
 RUN install2.r --error \
+    -r "https://cran.rstudio.com" \
     -r "http://www.bioconductor.org/packages/release/bioc" \
-    BiocInstaller \
     base64enc \
+    BiocInstaller \
     codetools \
     covr \
     data.table \
