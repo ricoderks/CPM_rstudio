@@ -1,13 +1,6 @@
 FROM rocker/rstudio
 MAINTAINER "Carl Boettiger and Dirk Eddelbuettel" rocker-maintainers@eddelbuettel.com
 
-## Add binaries for more CRAN packages, deb-src repositories in case we need `apt-get build-dep`
-#RUN echo 'deb http://debian-r.debian.net/debian-r/ unstable main' >> /etc/apt/sources.list \
-#  && gpg --keyserver keyserver.ubuntu.com --recv-keys AE05705B842492A68F75D64E01BF7284B26DD379 \
-#  && gpg --export AE05705B842492A68F75D64E01BF7284B26DD379  | apt-key add - \
-#  && echo 'deb-src http://debian-r.debian.net/debian-r/ unstable main' >> /etc/apt/sources.list \
-#  && echo 'deb-src http://http.debian.net/debian testing main' >> /etc/apt/sources.list
-
 ## LaTeX:
 ## This installs inconsolata fonts used in R vignettes/manuals manually since texlive-fonts-extra is HUGE
 
@@ -37,10 +30,16 @@ RUN apt-get update \
   && apt-get install -y --no-install-recommends -t unstable \
     default-jdk \
     default-jre \
+    gdal-bin \
+    icedtea-netx \
     libatlas-base-dev \
     libcairo2-dev \
-    libssl-dev \
     libgsl0-dev \
+    libgdal1-dev \
+    libgeos-dev \
+    libgeos-c1v5 \
+    librdf0-dev \
+    libssl-dev \
     libmysqlclient-dev \
     libpq-dev \
     libsqlite3-dev \
@@ -50,6 +49,7 @@ RUN apt-get update \
     libxml2-dev \
     libxslt1-dev \
     libxt-dev \
+    netcdf-bin \
     qpdf \
     r-cran-rgl \
     ssh \
@@ -59,16 +59,18 @@ RUN apt-get update \
   && rm -rf /var/lib/apt/lists/ \
   && rm -rf /tmp/downloaded_packages/ /tmp/*.rds
 
-## Install the R packages. 
+## Install the Hadleyverse packages (and some close friends). 
 RUN install2.r --error \
     broom \
     DiagrammeR \
     devtools \
     dplyr \
     ggplot2 \
+    ggthemes \
     haven \
     httr \
     knitr \
+    lubridate \
     packrat \
     pryr \
     purrr \
@@ -80,12 +82,14 @@ RUN install2.r --error \
     testthat \
     tidyr \
     shiny \
+    stringr \
     xml2 
 
 ## Manually install (useful packages from) the SUGGESTS list of the above packages.
 ## (because --deps TRUE can fail when packages are added/removed from CRAN)
-RUN Rscript -e 'source("http://bioconductor.org/biocLite.R"); biocLite("BiocInstaller")' \
-  && install2.r --error \
+RUN install2.r --error \
+    -r "http://www.bioconductor.org/packages/release/bioc" \
+    BiocInstaller \
     base64enc \
     codetools \
     covr \
