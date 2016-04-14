@@ -75,14 +75,18 @@ RUN install2.r --error \
     pryr \
     purrr \
     reshape2 \
-    rmarkdown \
-    rvest \
     readr \
     readxl \
+    rmarkdown \
+    rmdformats \
+    rticles \
+    rvest \
     testthat \
     tidyr \
     shiny \
     stringr \
+    tibble \
+    tufte \
     xml2 
 
 ## Manually install (useful packages from) the SUGGESTS list of the above packages.
@@ -127,7 +131,11 @@ RUN install2.r --error \
     testit \
     V8 \
     XML \
+  && r -e 'source("https://raw.githubusercontent.com/MangoTheCat/remotes/master/install-github.R")$value("mangothecat/remotes")' \
+  && r -e 'remotes::install_github("wesm/feather/R")' \
   && rm -rf /tmp/downloaded_packages/ /tmp/*.rds
+
+
 
 ## httr authentication uses this port
 EXPOSE 1410
