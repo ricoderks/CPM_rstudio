@@ -43,6 +43,7 @@ RUN apt-get update \
     libmysqlclient-dev \
     libpq-dev \
     libsqlite3-dev \
+    librsvg2-dev \
     libv8-dev \
     libxcb1-dev \
     libxdmcp-dev \
