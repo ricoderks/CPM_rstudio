@@ -50,6 +50,7 @@ RUN apt-get update \
     libxml2-dev \
     libxslt1-dev \
     libxt-dev \
+    mdbtools \
     netcdf-bin \
     qpdf \
     r-cran-rgl \
@@ -78,6 +79,7 @@ RUN install2.r --error \
     reshape2 \
     readr \
     readxl \
+    revealjs \
     rmarkdown \
     rmdformats \
     rticles \
