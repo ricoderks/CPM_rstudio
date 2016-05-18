@@ -88,6 +88,7 @@ RUN install2.r --error \
     tidyr \
     shiny \
     stringr \
+    svglite \
     tibble \
     tufte \
     xml2 
