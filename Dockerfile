@@ -34,6 +34,7 @@ RUN apt-get update \
     icedtea-netx \
     libatlas-base-dev \
     libcairo2-dev \
+    libhunspell-dev \
     libgsl0-dev \
     libgdal-dev \
     libgeos-dev \
@@ -84,6 +85,7 @@ RUN install2.r --error \
     rmdformats \
     rticles \
     rvest \
+    rversions \
     testthat \
     tidyr \
     shiny \
@@ -105,10 +107,12 @@ RUN install2.r --error \
     data.table \
     downloader \
     gridExtra \
+    gmailr \
     gtable \
     hexbin \
     Hmisc \
     htmlwidgets \
+    hunspell \
     jpeg \
     Lahman \
     lattice \
