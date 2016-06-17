@@ -83,6 +83,7 @@ RUN install2.r --error \
     revealjs \
     rmarkdown \
     rmdformats \
+    rstudioapi \
     rticles \
     rvest \
     rversions \
@@ -102,10 +103,14 @@ RUN install2.r --error \
     -r "http://www.bioconductor.org/packages/release/bioc" \
     base64enc \
     BiocInstaller \
+    bitops \
+    crayon \
     codetools \
     covr \
     data.table \
     downloader \
+    evaluate \
+    git2r \
     gridExtra \
     gmailr \
     gtable \
@@ -137,6 +142,7 @@ RUN install2.r --error \
     RSQLite \
     testit \
     V8 \
+    withr \
     XML \
   && r -e 'source("https://raw.githubusercontent.com/MangoTheCat/remotes/master/install-github.R")$value("mangothecat/remotes")' \
   && r -e 'remotes::install_github("wesm/feather/R")' \
