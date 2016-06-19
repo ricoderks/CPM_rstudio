@@ -122,6 +122,7 @@ RUN install2.r --error \
     lattice \
     lintr \
     MASS \
+    openxlsx \
     PKI \
     png \
     microbenchmark \
