@@ -117,6 +117,7 @@ RUN install2.r --error \
     hexbin \
     Hmisc \
     htmlwidgets \
+    hunspell \
     jpeg \
     Lahman \
     lattice \
