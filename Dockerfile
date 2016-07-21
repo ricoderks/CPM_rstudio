@@ -89,6 +89,7 @@ RUN install2.r --error \
     rversions \
     testthat \
     tidyr \
+    servr \
     shiny \
     stringr \
     svglite \
