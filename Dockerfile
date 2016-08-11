@@ -35,7 +35,7 @@ RUN apt-get update \
     libatlas-base-dev \
     libcairo2-dev \
     libhunspell-dev \
-    libgsl0-dev \
+    libgsl-dev \
     libgdal-dev \
     libgeos-dev \
     libgeos-c1v5 \
