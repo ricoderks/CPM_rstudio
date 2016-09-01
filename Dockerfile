@@ -97,6 +97,7 @@ RUN install2.r --error \
     tufte \
     xml2 
 
+
 ## Manually install (useful packages from) the SUGGESTS list of the above packages.
 ## (because --deps TRUE can fail when packages are added/removed from CRAN)
 RUN install2.r --error \
@@ -151,6 +152,18 @@ RUN install2.r --error \
   && r -e 'remotes::install_github("wesm/feather/R")' \
   && rm -rf /tmp/downloaded_packages/ /tmp/*.rds
 
+## install some packages I need (e.g. from bioconductor)
+## not yet the same approach as above (i.e. install SUGGETS list manually)
+RUN install2.r --error \
+	-r "https://lib.ugent.be/CRAN/" \
+    -r "http://www.bioconductor.org/packages/release/bioc" \
+	xcms \
+	CAMERA \
+	rsm \
+	&& r -e 'source("https://raw.githubusercontent.com/MangoTheCat/remotes/master/install-github.R")$value("mangothecat/remotes")' \
+	&& r -e 'remotes::install_github("vanmooylipidomics/LOBSTAHS")' \
+	&& r -e 'remotes::install_github("rietho/IPO")' \
+	&& rm -rf /tmp/downloaded_packages/ /tmp/*.rds
 
 
 ## httr authentication uses this port
