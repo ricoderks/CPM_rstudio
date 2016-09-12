@@ -54,6 +54,7 @@ RUN apt-get update \
     mdbtools \
     netcdf-bin \
     qpdf \
+    r-cran-rgl \
     ssh \
     vim \
   && R CMD javareconf \
@@ -80,7 +81,6 @@ RUN install2.r --error \
     readr \
     readxl \
     revealjs \
-    rgl \
     rmarkdown \
     rmdformats \
     rstudioapi \
