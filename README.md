@@ -8,10 +8,5 @@ A docker container based on rocker/hadleyverse with packages used within the CPM
 * LOBSTAHS
 
 Still need to add :
-* pcaMethods
-* pls
 * Rcpm
-* preprocessCore
-* maybe xml2
 * maybe snow
-* maybe RSQLite
