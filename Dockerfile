@@ -166,7 +166,7 @@ RUN install2.r --error \
 	&& r -e 'source("https://raw.githubusercontent.com/MangoTheCat/remotes/master/install-github.R")$value("mangothecat/remotes")' \
 	&& r -e 'remotes::install_github("vanmooylipidomics/LOBSTAHS")' \
 	&& r -e 'remotes::install_github("rietho/IPO")' \
-	&& r -e 'remotes::install_git("https://git.lumc.nl/rjederks/Rcpm.git")'
+	&& r -e 'remotes::install_git("https://git.lumc.nl/rjederks/Rcpm.git")' \
 	&& rm -rf /tmp/downloaded_packages/ /tmp/*.rds
 
 
