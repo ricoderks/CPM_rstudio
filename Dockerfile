@@ -163,6 +163,7 @@ RUN install2.r --error \
 	pcaMethods \
 	pls \
 	preprocessCore \
+	plotly \
 	&& r -e 'source("https://raw.githubusercontent.com/MangoTheCat/remotes/master/install-github.R")$value("mangothecat/remotes")' \
 	&& r -e 'remotes::install_github("vanmooylipidomics/LOBSTAHS")' \
 	&& r -e 'remotes::install_github("rietho/IPO")' \
