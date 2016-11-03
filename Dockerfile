@@ -153,11 +153,13 @@ RUN install2.r --error \
   && r -e 'remotes::install_github("wesm/feather/R")' \
   && rm -rf /tmp/downloaded_packages/ /tmp/*.rds
 
+
+
 ## install some packages I need (e.g. from bioconductor)
 ## not yet the same approach as above (i.e. install SUGGETS list manually)
 RUN install2.r --error \
 	-r "https://lib.ugent.be/CRAN/" \
-        -r "http://www.bioconductor.org/packages/release/bioc" \
+       -r "http://www.bioconductor.org/packages/release/bioc" \
 	xcms \
 	CAMERA \
 	rsm \
