@@ -37,10 +37,9 @@ RUN apt-get update \
     libatlas-base-dev \
     libcairo2-dev \
     libhunspell-dev \
-    libgsl-dev \
-    libgdal-dev \
-    libgeos-dev \
     libgeos-c1v5 \
+    libgeos-dev \
+    libgsl-dev \
     librdf0-dev \
     libssl-dev \
     libmysqlclient-dev \
@@ -91,6 +90,7 @@ RUN install2.r --error \
     rversions \
     testthat \
     tidyr \
+    tidyverse \
     servr \
     shiny \
     stringr \
@@ -98,7 +98,6 @@ RUN install2.r --error \
     tibble \
     tufte \
     xml2 
-
 
 ## Manually install (useful packages from) the SUGGESTS list of the above packages.
 ## (because --deps TRUE can fail when packages are added/removed from CRAN)
@@ -158,7 +157,7 @@ RUN install2.r --error \
 ## not yet the same approach as above (i.e. install SUGGETS list manually)
 RUN install2.r --error \
 	-r "https://lib.ugent.be/CRAN/" \
-    -r "http://www.bioconductor.org/packages/release/bioc" \
+        -r "http://www.bioconductor.org/packages/release/bioc" \
 	xcms \
 	CAMERA \
 	rsm \
