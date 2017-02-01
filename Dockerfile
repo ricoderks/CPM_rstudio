@@ -1,12 +1,11 @@
-FROM rocker/hadleyverse
+FROM rocker/tidyverse:latest
 MAINTAINER "Carl Boettiger and Dirk Eddelbuettel" rocker-maintainers@eddelbuettel.com
 
 ## install some packages I need (e.g. from bioconductor)
 ## not yet the same approach as above (i.e. install SUGGETS list manually)
 RUN install2.r --error \
-	#-r "https://lib.ugent.be/CRAN/" \
-        -r "https://cran.uni-muenster.de/" \
-        -r "http://www.bioconductor.org/packages/release/bioc" \
+        --repos $MRAN
+        --repos "http://www.bioconductor.org/packages/release/bioc" \
 	xcms \
 	CAMERA \
 	rsm \
