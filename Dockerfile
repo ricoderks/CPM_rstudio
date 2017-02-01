@@ -4,8 +4,9 @@ MAINTAINER "Carl Boettiger and Dirk Eddelbuettel" rocker-maintainers@eddelbuette
 ## install some packages I need (e.g. from bioconductor)
 ## not yet the same approach as above (i.e. install SUGGETS list manually)
 RUN install2.r --error \
-	-r "https://lib.ugent.be/CRAN/" \
-       -r "http://www.bioconductor.org/packages/release/bioc" \
+	#-r "https://lib.ugent.be/CRAN/" \
+        -r "https://cran.uni-muenster.de/" \
+        -r "http://www.bioconductor.org/packages/release/bioc" \
 	xcms \
 	CAMERA \
 	rsm \
