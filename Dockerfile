@@ -1,5 +1,5 @@
 FROM rocker/verse:latest
-LABEL maintainer "Carl Boettiger and Dirk Eddelbuettel" rocker-maintainers@eddelbuettel.com
+LABEL maintainer "Rico Derks" r.j.e.derks@lumc.nl
 
 ## install some packages I need (e.g. from bioconductor)
 ## not yet the same approach as above (i.e. install SUGGETS list manually)
