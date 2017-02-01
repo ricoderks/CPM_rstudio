@@ -1,24 +1,45 @@
-FROM rocker/verse:latest
-LABEL maintainer "Rico Derks" r.j.e.derks@lumc.nl
+FROM rocker/tidyverse:latest
+MAINTAINER "Carl Boettiger" cboettig@ropensci.org
 
-## install some packages I need (e.g. from bioconductor)
-## not yet the same approach as above (i.e. install SUGGETS list manually)
-RUN . /etc/environment \
+## Add LaTeX, rticles and bookdown support
+RUN apt-get update \
+  && apt-get install -y --no-install-recommends \
+    ghostscript \
+    imagemagick \
+    ## system dependency of hadley/pkgdown
+    libmagick++-dev \
+    ## system dependency of hunspell (devtools)
+    libhunspell-dev \
+    ## R CMD Check wants qpdf to check pdf sizes, or iy throws a Warning 
+    qpdf \
+    ## for git via ssh key 
+    ssh \
+    ## for building pdfs via pandoc/LaTeX
+    lmodern \
+    texlive-fonts-recommended \
+    texlive-humanities \
+    texlive-latex-extra \
+    texinfo \
+    ## just because
+    less \
+    vim \
+  && apt-get clean \
+  && rm -rf /var/lib/apt/lists/ \
+  ## R manuals use inconsolata font, but texlive-fonts-extra is huge, so:
+  && cd /usr/share/texlive/texmf-dist \
+  && wget http://mirrors.ctan.org/install/fonts/inconsolata.tds.zip \
+  && unzip inconsolata.tds.zip \
+  && rm inconsolata.tds.zip \
+  && echo "Map zi4.map" >> /usr/share/texlive/texmf-dist/web2c/updmap.cfg \
+  && mktexlsr \
+  && updmap-sys \
+  ## And some nice R packages for publishing-related stuff 
+  && . /etc/environment \ 
   && install2.r --error \
     --repos $MRAN \
-    --repos 'http://www.bioconductor.org/packages/release/bioc' \
-    xcms \
-    CAMERA \
-    rsm \
-    pcaMethods \
-    pls \
-    preprocessCore \
-    plotly \
-    multtest \
-    VennDiagram \
-  && r -e 'source("https://raw.githubusercontent.com/MangoTheCat/remotes/master/install-github.R")$value("mangothecat/remotes")' \
-  && r -e 'remotes::install_github("vanmooylipidomics/LOBSTAHS")' \
-  && r -e 'remotes::install_github("rietho/IPO")' \
-  && r -e 'remotes::install_github("ricoderks/Rcpm")' \
-  && rm -rf /tmp/downloaded_packages/ /tmp/*.rds
-
+    --repos "http://www.bioconductor.org/packages/release/bioc" \
+    --deps TRUE \
+    bookdown \
+    rticles \
+    rmdshower \
+    xcms
