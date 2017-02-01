@@ -4,7 +4,7 @@ MAINTAINER "Carl Boettiger and Dirk Eddelbuettel" rocker-maintainers@eddelbuette
 ## install some packages I need (e.g. from bioconductor)
 ## not yet the same approach as above (i.e. install SUGGETS list manually)
 RUN install2.r --error \
-        --repos $MRAN \
+        --repos "https://lib.ugent.be/CRAN/" \
         --repos "http://www.bioconductor.org/packages/release/bioc" \
 	xcms \
 	CAMERA \
