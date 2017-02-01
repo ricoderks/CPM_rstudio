@@ -5,7 +5,7 @@ LABEL maintainer "Carl Boettiger and Dirk Eddelbuettel" rocker-maintainers@eddel
 ## not yet the same approach as above (i.e. install SUGGETS list manually)
 RUN . /etc/environment \
   && install2.r --error \
-    --repos 'https://lib.ugent.be/CRAN/' \
+    --repos $MRAN \
     --repos 'http://www.bioconductor.org/packages/release/bioc' \
     xcms \
     CAMERA \
