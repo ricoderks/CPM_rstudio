@@ -3,7 +3,10 @@ LABEL maintainer "Rico Derks" r.j.e.derks@lumc.nl
 
 ## install some packages I need (e.g. from bioconductor)
 ## not yet the same approach as above (i.e. install SUGGETS list manually)
-RUN . /etc/environment \
+RUN apt-get update \
+  && apt-get install -y --no-install-recommends \
+    libnetcdf-dev \
+  && . /etc/environment \
   && install2.r --error \
     --repos $MRAN \
     --repos 'http://www.bioconductor.org/packages/release/bioc' \
