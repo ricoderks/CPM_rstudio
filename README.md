@@ -1,7 +1,7 @@
-This image is based on **rocker/hadleyverse**. I want to add some extra packages for me to work with.
+This image is based on **rocker/verse**. I want to add some extra packages for me to work with.
 
 
-A docker container based on rocker/hadleyverse with packages used within the CPM group. The extra package which are added are :
+A docker container based on rocker/verse with packages used within the CPM group. The extra packages which are added are :
 
 * xcms
 * CAMERA
