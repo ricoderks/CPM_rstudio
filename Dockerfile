@@ -8,8 +8,9 @@ RUN apt-get update \
     subversion \
     netcdf-bin \
     libnetcdf-dev \
-  && . /etc/environment \
-  && install2.r --error \
+  && . /etc/environment 
+
+RUN install2.r --error \
     --repos $MRAN \
     --repos 'http://www.bioconductor.org/packages/release/bioc' \
     xcms \
