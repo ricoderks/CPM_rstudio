@@ -5,6 +5,7 @@ LABEL maintainer "Rico Derks" r.j.e.derks@lumc.nl
 ## not yet the same approach as above (i.e. install SUGGETS list manually)
 RUN apt-get update \
   && apt-get install -y --no-install-recommends \
+    subversion \
     netcdf-bin \
     libnetcdf-dev \
   && . /etc/environment \
