@@ -8,9 +8,8 @@ RUN apt-get update \
     subversion \
     netcdf-bin \
     libnetcdf-dev \
-  && . /etc/environment 
-
-RUN install2.r --error \
+  && . /etc/environment \
+  && install2.r --error \
     --repos $MRAN \
     --repos 'http://www.bioconductor.org/packages/release/bioc' \
     xcms \
@@ -23,8 +22,8 @@ RUN install2.r --error \
     multtest \
     VennDiagram \
   && r -e 'source("https://raw.githubusercontent.com/MangoTheCat/remotes/master/install-github.R")$value("mangothecat/remotes")' \
-  && r -e 'remotes::install_github("vanmooylipidomics/LOBSTAHS")' \
-  && r -e 'remotes::install_github("rietho/IPO")' \
-  && r -e 'remotes::install_github("ricoderks/Rcpm")' \
+  && r -e 'devtools::install_github("vanmooylipidomics/LOBSTAHS")' \
+  && r -e 'devtools::install_github("rietho/IPO")' \
+  && r -e 'devtools::install_github("ricoderks/Rcpm")' \
   && rm -rf /tmp/downloaded_packages/ /tmp/*.rds
 
