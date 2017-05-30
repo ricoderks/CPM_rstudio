@@ -1,4 +1,4 @@
-FROM rocker/verse:latest
+FROM rocker/tidyverse:latest
 LABEL maintainer "Rico Derks" r.j.e.derks@lumc.nl
 
 ## install some packages I need (e.g. from bioconductor)
