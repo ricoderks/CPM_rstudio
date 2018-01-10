@@ -21,6 +21,7 @@ RUN apt-get update \
     plotly \
     multtest \
     VennDiagram \
+    sessioninfo \
   && r -e 'source("https://raw.githubusercontent.com/MangoTheCat/remotes/master/install-github.R")$value("mangothecat/remotes")' \
   && r -e 'devtools::install_github("vanmooylipidomics/LOBSTAHS")' \
   && r -e 'devtools::install_github("rietho/IPO")' \
