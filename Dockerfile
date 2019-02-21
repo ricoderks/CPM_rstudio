@@ -28,5 +28,3 @@ RUN apt-get update \
   && r -e 'devtools::install_github("ricoderks/ggCPM")' \
   && r -e 'devtools::install_github("nacnudus/unpivotr")' \
   && rm -rf /tmp/downloaded_packages/ /tmp/*.rds
-
-RUN usermod -u 36480 rstudio
