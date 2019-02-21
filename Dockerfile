@@ -29,5 +29,7 @@ RUN apt-get update \
   && r -e 'devtools::install_github("nacnudus/unpivotr")' \
   && rm -rf /tmp/downloaded_packages/ /tmp/*.rds
 
+RUN groupadd 'Domain Users'
+RUN groupmod -g 513 'Domain Users'
 RUN usermod -u 36480 rstudio
-RUN usermod -G `Domain Users` rstudio
+RUN usermod -a -G 'Domain Users' rstudio
