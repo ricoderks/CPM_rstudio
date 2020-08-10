@@ -8,26 +8,23 @@ RUN apt-get update \
     subversion \
     netcdf-bin \
     libnetcdf-dev \
-  && . /etc/environment \
-  && install2.r --error \
-    --repos $MRAN \
-    --repos 'http://www.bioconductor.org/packages/release/bioc' \
-    xcms \
-    CAMERA \
+  && . /etc/environment
+  
+RUN  install2.r --error --skipinstalled \ 
     rsm \
-    pcaMethods \
     pls \
-    preprocessCore \
     plotly \
-    multtest \
     VennDiagram \
     sessioninfo \
     tidyxl \
     openxlsx \
     patchwork \
     gt \
-    unpivotr \
-  && r -e 'source("https://raw.githubusercontent.com/MangoTheCat/remotes/master/install-github.R")$value("mangothecat/remotes")' \
-  && r -e 'devtools::install_github("ricoderks/Rcpm")' \
-  && r -e 'devtools::install_github("ricoderks/ggCPM")' \
-  && rm -rf /tmp/downloaded_packages/ /tmp/*.rds
+    unpivotr
+  #&& r -e 'source("https://raw.githubusercontent.com/MangoTheCat/remotes/master/install-github.R")$value("mangothecat/remotes")' \
+  
+RUN R -e 'BiocManager::install(c("xcms", "CAMERA", "multtest", "preprocessCore", "pcaMethods"))' \
+  && R -e 'devtools::install_github("ricoderks/Rcpm")' \
+  && R -e 'devtools::install_github("ricoderks/ggCPM")' 
+  
+RUN  rm -rf /tmp/downloaded_packages/ /tmp/*.rds
