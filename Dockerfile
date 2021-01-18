@@ -20,7 +20,10 @@ RUN  install2.r --error --skipinstalled \
     openxlsx \
     patchwork \
     gt \
-    unpivotr
+    unpivotr \
+    ggrepel \
+    pheatmap \
+    here
   #&& r -e 'source("https://raw.githubusercontent.com/MangoTheCat/remotes/master/install-github.R")$value("mangothecat/remotes")' \
   
 RUN R -e 'BiocManager::install(c("xcms", "CAMERA", "multtest", "preprocessCore", "pcaMethods"))' \
